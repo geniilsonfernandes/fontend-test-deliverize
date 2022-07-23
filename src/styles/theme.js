@@ -3,6 +3,7 @@ export default {
     white: {
       100: "#ffffff",
       300: "#F4F4F4",
+      400: "#ebebeb",
       500: "#E5E5E5"
     },
     red: {
@@ -11,7 +12,9 @@ export default {
     yallow: {
       100: "#F09035"
     },
+    overlay: "rgba(50, 48, 48, 0.85)",
     gray: {
+      light: "#C0C0C0",
       darker: "#656363"
     }
   },
