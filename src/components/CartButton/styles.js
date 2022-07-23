@@ -6,6 +6,7 @@ export const Icon = styled.div`
 `;
 export const Wrapper = styled(ButtonWrapper)`
   position: relative;
+  height: 48px;
 `;
 
 export const Ribbon = styled.div`
@@ -16,7 +17,7 @@ export const Ribbon = styled.div`
     color: ${theme.colors.white[100]};
     font-weight: 400;
     font-size: 1.1rem;
-    line-height: 1.0rem;
+    line-height: 1rem;
 
     position: absolute;
     display: flex;
@@ -26,4 +27,23 @@ export const Ribbon = styled.div`
     right: -5px;
     top: -5px;
   `}
+`;
+
+export const PopUp = styled.div`
+  position: absolute;
+
+  top: 62px;
+  right: 0;
+  animation: intoUp 200ms ease-in-out forwards;
+
+  @keyframes intoUp {
+    from {
+      transform: translateY(-20px);
+      opacity: 0.8;
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px) scale(1);
+    }
+  }
 `;

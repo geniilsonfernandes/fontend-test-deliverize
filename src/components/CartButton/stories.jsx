@@ -6,3 +6,6 @@ export default {
 };
 
 export const Default = (args) => <CartButton {...args} />;
+Default.args = {
+  counter: 3
+};
