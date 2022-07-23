@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonWrapper /> should render current place in the document 1`] = `
+<div>
+  <button
+    class="sc-bczRLJ bFvGUo"
+  >
+    foo
+  </button>
+</div>
+`;
