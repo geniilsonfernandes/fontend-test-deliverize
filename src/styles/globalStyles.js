@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import "../styles/css/owfont-regular.css";
 
 const GlobalStyle = createGlobalStyle`
  * {
@@ -11,15 +10,15 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
   }
   body{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
   }
   input{
     font-size: 1.6rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
   button{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 `;
 
