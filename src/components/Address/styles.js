@@ -11,6 +11,8 @@ export const Wrapper = styled.div`
     transition: all ease-in-out 200ms;
     position: relative;
     z-index: 1;
+    cursor: pointer;
+    background: ${theme.colors.white[300]};
   `}
 `;
 export const Content = styled.span``;
