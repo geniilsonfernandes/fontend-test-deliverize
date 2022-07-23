@@ -8,7 +8,7 @@ export const decorators = [
   (Story) => (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <div style={{ margin: " 0 auto", maxWidth: "900px" }}>
+      <div style={{ margin: " 0 auto", maxWidth: "1440px" }}>
         <Story />
       </div>
     </ThemeProvider>
