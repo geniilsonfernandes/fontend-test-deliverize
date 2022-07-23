@@ -23,7 +23,8 @@ export const CartButton = ({ counter, product }) => {
   return (
     <S.Wrapper aria-label="carrinho">
       <S.Icon>
-        <S.Ribbon>{counter}</S.Ribbon>
+        {counter > 0 && <S.Ribbon>{counter}</S.Ribbon>}
+
         <CartIcon />
       </S.Icon>
       Carrinho

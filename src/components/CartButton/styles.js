@@ -17,7 +17,7 @@ export const Ribbon = styled.div`
     font-weight: 400;
     font-size: 1.1rem;
     line-height: 1rem;
-
+    background: ${theme.colors.yallow[100]};
     position: absolute;
     display: flex;
     align-items: center;

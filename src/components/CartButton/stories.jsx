@@ -5,7 +5,17 @@ export default {
   component: CartButton
 };
 
-export const Default = (args) => <CartButton {...args} />;
+const styles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center"
+};
+
+export const Default = (args) => (
+  <div style={{ ...styles }}>
+    <CartButton {...args} />
+  </div>
+);
 Default.args = {
   counter: 3
 };
