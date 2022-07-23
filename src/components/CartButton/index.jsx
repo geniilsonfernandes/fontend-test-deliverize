@@ -12,7 +12,7 @@ export const CartButton = ({ counter, product }) => {
 
   useEffect(() => {
     product && setShowPopop(true);
-    
+
     const timer = setTimeout(() => {
       setShowPopop(false);
     }, 3000);
@@ -21,7 +21,7 @@ export const CartButton = ({ counter, product }) => {
   }, [counter]);
 
   return (
-    <S.Wrapper>
+    <S.Wrapper aria-label="carrinho">
       <S.Icon>
         <S.Ribbon>{counter}</S.Ribbon>
         <CartIcon />
