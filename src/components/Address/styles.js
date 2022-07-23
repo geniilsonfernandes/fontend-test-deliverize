@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     padding: 8px;
+    height: 48px;
     box-shadow: ${theme.box_shadow.small};
     border-radius: ${theme.radius};
     display: flex;
