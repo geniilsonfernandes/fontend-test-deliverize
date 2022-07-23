@@ -1,6 +1,6 @@
 import React from "react";
 import P from "prop-types";
-import { convertNumberToCurrency } from "../../utils/adadasd";
+import { convertNumberToCurrency } from "../../utils/convertNumberToCurrency";
 import { EmptyIcon } from "../../Icons";
 
 import * as S from "./styles";
