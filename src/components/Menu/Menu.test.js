@@ -46,7 +46,7 @@ describe("<Menu />", () => {
       visibility: "visible",
       pointerEvents: "initial"
     });
-    userEvent.click(menuBtn);
+    userEvent.click(menuMobile.firstElementChild);
     expect(menuMobile).toHaveAttribute("aria-hidden", "true");
   });
   it("should render Menu desktop ", () => {
