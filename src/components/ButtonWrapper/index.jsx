@@ -3,13 +3,13 @@ import styled, { css } from "styled-components";
 export const ButtonWrapper = styled.button`
   ${({ theme }) => css`
     height: 48px;
-    padding: 0 10px;
     border-radius: ${theme.radius};
     transition: all ease-in-out 200ms;
-    background: ${theme.colors.white[100]};
+    background: transparent;
 
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 
     font-weight: 400;
