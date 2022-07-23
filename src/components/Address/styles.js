@@ -13,7 +13,9 @@ export const Wrapper = styled.div`
     position: relative;
     z-index: 1;
     cursor: pointer;
-    background: ${theme.colors.white[300]};
+    :hover {
+      background: ${theme.colors.white[300]};
+    }
   `}
 `;
 export const Content = styled.span``;
@@ -23,7 +25,6 @@ export const Label = styled.span`
     font-weight: 400;
     font-size: 1.2rem;
     line-height: 2.4rem;
-    margin-bottom: 4px;
   `}
 `;
 
