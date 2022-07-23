@@ -18,7 +18,6 @@ export const ButtonWrapper = styled.button`
     border: none;
     :hover {
       cursor: pointer;
-      background: ${theme.colors.white[300]};
     }
   `}
 `;
