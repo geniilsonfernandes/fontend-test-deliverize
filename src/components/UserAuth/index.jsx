@@ -8,18 +8,18 @@ import * as S from "./styles";
 export const UserAuth = ({ user }) => {
   if (user) {
     return (
-      <ButtonWrapper>
-        <S.Icon>
-          <UserIcon />
+      <ButtonWrapper aria-label="user menu">
+        <S.Icon aria-label="user">
+          <UserIcon title="user" />
         </S.Icon>
         {user}
       </ButtonWrapper>
     );
   } else {
     return (
-      <ButtonWrapper>
-        <S.Icon>
-          <UserIcon />
+      <ButtonWrapper aria-label="user menu">
+        <S.Icon aria-label="user">
+          <UserIcon title="user" />
         </S.Icon>
         Entrar
       </ButtonWrapper>
