@@ -16,8 +16,12 @@ export default {
     }
   },
   box_shadow: {
-    small: "0px 1px 2px rgba(0, 0, 0, 0.1);"
+    small: "0px 1px 2px rgba(0, 0, 0, 0.1);",
+    huge: "0px 2px 4px rgba(0, 0, 0, 0.15);"
   },
   radius: "4px",
-  fontSizes: {}
+  fontSizes: {},
+  media: {
+    small: "1068px"
+  }
 };
