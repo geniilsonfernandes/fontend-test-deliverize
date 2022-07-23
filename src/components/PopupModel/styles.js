@@ -12,14 +12,14 @@ export const Wrapper = styled.div`
 const ArrowModifier = {
   left: () =>
     css`
-      left: 0;
+      left: 10px;
     `,
   center: () => css`
     left: 50%;
     transform: translateX(50%);
   `,
   right: () => css`
-    right: 0;
+    right: 10px;
   `
 };
 export const Arrow = styled.span`
@@ -36,6 +36,7 @@ export const Arrow = styled.span`
 `;
 export const Label = styled.div`
   ${({ theme }) => css`
+    white-space: nowrap;
     padding: 8px 10px;
     font-family: "Roboto Condensed", sans-serif;
     font-style: normal;
