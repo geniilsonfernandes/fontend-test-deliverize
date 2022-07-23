@@ -17,7 +17,7 @@ describe("<PopupModel />", () => {
     expect(screen.getByText(mockProps.label)).toBeInTheDocument();
     expect(
       screen.getByText(mockProps.label).previousElementSibling
-    ).toHaveStyle({ left: "0" });
+    ).toHaveStyle({ left: "10px" });
     expect(screen.getByText(/this is an popup/i)).toBeInTheDocument();
   });
   it("should render PopupModel with arrow in center", () => {
@@ -40,6 +40,6 @@ describe("<PopupModel />", () => {
 
     expect(
       screen.getByText(mockProps.label).previousElementSibling
-    ).toHaveStyle({ right: "0" });
+    ).toHaveStyle({ right: "10px" });
   });
 });
