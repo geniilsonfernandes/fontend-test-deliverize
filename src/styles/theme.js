@@ -8,6 +8,9 @@ export default {
     red: {
       100: "#D80000"
     },
+    yallow: {
+      100: "#F09035"
+    },
     gray: {
       darker: "#656363"
     }
