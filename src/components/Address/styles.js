@@ -12,29 +12,30 @@ export const Wrapper = styled.div`
     transition: all ease-in-out 200ms;
     position: relative;
     z-index: 1;
+    background: ${theme.colors.white[100]};
     cursor: pointer;
     :hover {
-      background: ${theme.colors.white[300]};
+      background: ${theme.colors.white[200]};
     }
   `}
 `;
-export const Content = styled.span``;
-export const Label = styled.span`
+export const Content = styled.div``;
+export const Label = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.red[100]};
     font-weight: 400;
     font-size: 1.2rem;
-    line-height: 2.4rem;
+    line-height: 1.4rem;
   `}
 `;
 
-export const Address = styled.span`
+export const Address = styled.div`
   ${({ theme }) => css`
     display: block;
     color: ${theme.colors.gray.darker};
     font-weight: 700;
     font-size: 1.2rem;
-    line-height: 1.4rem;
+    margin-top: 4px;
   `}
 `;
 
