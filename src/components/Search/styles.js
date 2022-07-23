@@ -6,7 +6,7 @@ export const Wrapper = styled.form`
     border-radius: ${theme.radius};
     transition: all ease-in-out 200ms;
     background: ${theme.colors.white[100]};
-    border: 1px solid ${theme.colors.red[100]};
+    border: 1px solid ${theme.colors.white[300]};
     input {
       border-radius: ${theme.radius};
       padding: 0 8px;
