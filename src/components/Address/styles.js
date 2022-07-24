@@ -32,7 +32,7 @@ export const Label = styled.div`
 export const Address = styled.div`
   ${({ theme }) => css`
     display: block;
-    color: ${theme.colors.gray.darker};
+    color: ${theme.colors.black[300]};
     font-weight: 700;
     font-size: 1.2rem;
     margin-top: 4px;

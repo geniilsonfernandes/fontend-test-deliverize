@@ -65,7 +65,7 @@ export const ArrowLeft = styled(ButtonWrapper)`
     transform: rotate(90deg);
     svg {
       path {
-        fill: ${theme.colors.gray.darker};
+        fill: ${theme.colors.black[300]};
       }
     }
   `}
@@ -148,7 +148,7 @@ export const Fullcontent = styled.div`
         left: 50%;
         transform: translateX(-50%);
         height: 1px;
-        background: ${theme.colors.gray.light};
+        background: ${theme.colors.black[300]};
         top: -16px;
         z-index: 1;
       }
