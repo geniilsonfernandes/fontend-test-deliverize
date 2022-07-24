@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { AddIcon, RemoveIcon } from "../../Icons";
+import { convertNumberToCurrency } from "../../utils/convertNumberToCurrency";
 import P from "prop-types";
 
 import * as S from "./styles";
-import { convertNumberToCurrency } from "../../utils/convertNumberToCurrency";
 
 export const IngredientsControl = ({
-  onAddItem,
-  onRemoveItem,
+  onIncremental,
+  onDecremental,
   onCounter,
   limiter,
   label,
@@ -15,16 +15,16 @@ export const IngredientsControl = ({
 }) => {
   const [counter, setCounter] = useState(0);
 
-  const handleAdd = () => {
+  const handleIncremental = () => {
     if (counter < limiter) {
-      onAddItem();
+      onIncremental();
       setCounter((s) => s + 1);
       onCounter(counter);
     }
   };
-  const handleRemove = () => {
+  const handleDecremental = () => {
     if (counter > 0) {
-      onRemoveItem();
+      onDecremental();
       setCounter((s) => s - 1);
       onCounter(counter);
     }
@@ -42,7 +42,7 @@ export const IngredientsControl = ({
 
         <S.CounterControl aria-label="contador">
           <S.Control
-            onClick={() => handleRemove()}
+            onClick={() => handleDecremental()}
             aria-label="remover"
             isDisabled={counter === 0}
           >
@@ -50,7 +50,7 @@ export const IngredientsControl = ({
           </S.Control>
           <S.Counter aria-label="quantidade">{counter}</S.Counter>
           <S.Control
-            onClick={() => handleAdd()}
+            onClick={() => handleIncremental()}
             aria-label="adicionar"
             isDisabled={counter === limiter}
           >
@@ -63,8 +63,8 @@ export const IngredientsControl = ({
 };
 
 IngredientsControl.propTypes = {
-  onAddItem: P.func,
-  onRemoveItem: P.func,
+  onIncremental: P.func,
+  onDecremental: P.func,
   onCounter: P.func,
   limiter: P.number,
   price: P.number,

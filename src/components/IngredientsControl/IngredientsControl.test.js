@@ -4,8 +4,8 @@ import { IngredientsControl } from ".";
 import renderWithTheme from "../../utils/test/renderWithTheme";
 
 const mockProps = {
-  onAddItem: jest.fn(),
-  onRemoveItem: jest.fn(),
+  onIncremental: jest.fn(),
+  onDecremental: jest.fn(),
   onCounter: () => {},
   limiter: 2,
   price: 4.99,
@@ -29,7 +29,7 @@ describe("<IngredientsControl />", () => {
     userEvent.click(buttonAdd);
     userEvent.click(buttonAdd);
 
-    expect(mockProps.onAddItem).toBeCalledTimes(2);
+    expect(mockProps.onIncremental).toBeCalledTimes(2);
     expect(counter).toHaveTextContent("2");
     expect(buttonAdd).toHaveStyle({ opacity: "0.5" });
   });
@@ -49,7 +49,7 @@ describe("<IngredientsControl />", () => {
     userEvent.click(buttonRemove);
     userEvent.click(buttonRemove);
 
-    expect(mockProps.onRemoveItem).toBeCalledTimes(2);
+    expect(mockProps.onDecremental).toBeCalledTimes(2);
     expect(counter).toHaveTextContent("0");
     expect(buttonRemove).toHaveStyle({ opacity: "0.5" });
   });
