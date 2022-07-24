@@ -28,7 +28,6 @@ exports[`<ButtonWrapper /> should render current place in the document 1`] = `
 
 .c0:hover {
   cursor: pointer;
-  background: #F4F4F4;
 }
 
 <div>
