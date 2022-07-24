@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@300;400;500;700;900&display=swap');
 
  * {
     margin: 0;
@@ -12,15 +13,15 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
   }
   body{
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, Helvetica, sans-serif;
     font-size: 1.6rem;
   }
   input{
     font-size: 1.6rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, Helvetica, sans-serif;
   }
   button{
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, Helvetica, sans-serif;
   }
 `;
 
