@@ -1,7 +1,7 @@
 import { IngredientsControl } from ".";
 
 export default {
-  title: "IngredientsControl",
+  title: "delivery/IngredientsControl",
   component: IngredientsControl
 };
 
