@@ -24,7 +24,7 @@ export const Title = styled.h2`
     font-weight: 500;
     font-size: 2.8rem;
     line-height: 100%;
-    color: ${theme.colors.gray.extra};
+    color: ${theme.colors.gray[300]};
     padding: 28px 0;
     @media (max-width: ${theme.media.small}) {
       padding: 16px 0;
@@ -36,7 +36,7 @@ export const Excerpt = styled.p`
   ${({ theme }) => css`
     font-weight: 400;
     font-size: 2rem;
-    color: ${theme.colors.gray.extra};
+    color: ${theme.colors.gray.gray[300]};
     @media (max-width: ${theme.media.small}) {
       font-size: 1.6rem;
       line-height: 2.4rem;
@@ -55,7 +55,7 @@ export const PriceGroup = styled.div`
 `;
 const PriceModifiers = {
   oldPrice: (theme) => css`
-    color: ${theme.colors.gray.extra};
+    color: ${theme.colors.gray.gray[300]};
     opacity: 0.8;
     ::after {
       content: "";
@@ -64,7 +64,7 @@ const PriceModifiers = {
       left: 0;
       transform: rotate(5deg);
       top: 50%;
-      background: ${theme.colors.gray.extra};
+      background: ${theme.colors.gray.gray[300]};
       position: absolute;
     }
   `
