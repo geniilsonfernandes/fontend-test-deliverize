@@ -8,7 +8,8 @@ export default {
 export const Default = (args) => <IngredientsControl {...args} />;
 
 Default.args = {
-  onAddItem: () => {},
+  onIncremental: () => {},
+  onDecremental: () => {},
   onRemoveItem: () => {},
   onCounter: () => {},
   limiter: 8,
