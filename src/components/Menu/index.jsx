@@ -5,10 +5,10 @@ import { Search } from "../Search";
 import { UserAuth } from "../UserAuth";
 import { CartButton } from "../CartButton";
 import { MediaMatch } from "../MediaMatch";
-
 import theme from "../../styles/theme";
-import * as S from "./styles";
 import useMenuToggle from "../../hook/useMenuToggle";
+
+import * as S from "./styles";
 
 const mockProps = {
   Address: "R. Antonio Braune, 222"
