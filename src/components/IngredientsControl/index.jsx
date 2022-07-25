@@ -24,7 +24,8 @@ export const IngredientsControl = ({
       onIncremental({
         [label.replace(" ", "-")]: {
           amount: counter + 1,
-          price: price
+          price: price,
+          name: label
         }
       });
     }
@@ -36,7 +37,8 @@ export const IngredientsControl = ({
       onDecremental({
         [label.replace(" ", "-")]: {
           amount: counter - 1,
-          price: price
+          price: price,
+          name: label
         }
       });
     }
@@ -48,7 +50,11 @@ export const IngredientsControl = ({
         <S.Description>
           <S.Label>{label}</S.Label>
           <S.Price>
-            <span>+</span> {convertNumberToCurrency(price, "BRL")}
+            <span>+</span>
+            {convertNumberToCurrency(
+              price * counter === 0 ? price : price * counter,
+              "BRL"
+            )}
           </S.Price>
         </S.Description>
 
