@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import P from "prop-types";
+import { valuesToArray } from "../../utils/valuesToArray";
 import { CutlerySelect } from "../CutlerySelect";
 import { IngredientsControl } from "../IngredientsControl";
 import { CounterControl } from "../Control";
@@ -39,8 +40,10 @@ export const OrderList = ({ itemsLimiter, items, onDispatchOrder }) => {
   };
 
   const handleDispatchOrder = () => {
+    const cleaningOrder = valuesToArray(order).filter((i) => i.amount != 0);
+
     const orderClosed = {
-      order,
+      additional: cleaningOrder,
       needCutlery,
       orderQuantity
     };
