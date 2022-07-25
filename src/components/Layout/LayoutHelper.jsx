@@ -33,3 +33,12 @@ export const Button = styled.button`
     }
   `}
 `;
+
+export const Container = css`
+  ${({ theme }) => css`
+    max-width: 1216px;
+    margin: 0 auto;
+    @media (max-width: ${theme.media.small}) {
+    }
+  `}
+`;
