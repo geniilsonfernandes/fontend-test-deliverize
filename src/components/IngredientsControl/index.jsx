@@ -11,22 +11,34 @@ export const IngredientsControl = ({
   onCounter,
   limiter,
   label,
-  price
+  price,
+  itemCounter,
+  max
 }) => {
   const [counter, setCounter] = useState(0);
 
   const handleIncremental = () => {
-    if (counter < limiter) {
-      onIncremental();
+    if (itemCounter < max) {
       setCounter((s) => s + 1);
-      onCounter(counter);
+      onCounter(limiter - 1);
+      onIncremental({
+        [label.replace(" ", "-")]: {
+          amount: counter + 1,
+          price: price
+        }
+      });
     }
   };
   const handleDecremental = () => {
     if (counter > 0) {
-      onDecremental();
       setCounter((s) => s - 1);
-      onCounter(counter);
+      onCounter(limiter + 1);
+      onDecremental({
+        [label.replace(" ", "-")]: {
+          amount: counter - 1,
+          price: price
+        }
+      });
     }
   };
 
@@ -52,7 +64,7 @@ export const IngredientsControl = ({
           <S.Control
             onClick={() => handleIncremental()}
             aria-label="adicionar"
-            isDisabled={counter === limiter}
+            isDisabled={itemCounter === max}
           >
             <RemoveIcon />
           </S.Control>
@@ -67,6 +79,8 @@ IngredientsControl.propTypes = {
   onDecremental: P.func,
   onCounter: P.func,
   limiter: P.number,
-  price: P.number,
-  label: P.string
+  itemCounter: P.number,
+  max: P.number,
+  price: P.number.isRequired,
+  label: P.string.isRequired
 };

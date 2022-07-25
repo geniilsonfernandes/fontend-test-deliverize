@@ -2,9 +2,18 @@ import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    padding: 8px;
-    height: 80px;
+    padding: 16px 8px;
     border-radius: ${theme.radius};
+    position: relative;
+    ::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background: ${theme.colors.yallow[100]};
+    }
   `}
 `;
 export const Content = styled.div`
@@ -17,11 +26,12 @@ export const Description = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 24px;
   justify-content: space-between;
 `;
 export const Label = styled.h2`
   ${({ theme }) => css`
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.6rem;
     color: ${theme.colors.black[300]};
   `}
@@ -83,7 +93,7 @@ export const Control = styled.button`
     align-items: center;
     ${isDisabled && ControlModifiers.disabled(theme)}
     :active {
-      transform: scale(0.8);
+      transform: scale(0.9);
     }
   `}
 `;
