@@ -28,6 +28,7 @@ export const ButtonsGroup = styled.div`
 
 const ButtonModifiers = {
   active: (theme) => css`
+    height: 32px;
     background: ${theme.colors.yallow[100]};
     color: ${theme.colors.white[100]};
   `

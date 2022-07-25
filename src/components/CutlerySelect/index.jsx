@@ -8,8 +8,8 @@ export const CutlerySelect = ({ onSelect }) => {
   const [select, setSelect] = useState(null);
 
   const onChange = (value) => {
-    !!onSelect && onSelect(value);
     setSelect(value);
+    !!onSelect && onSelect({ cutlery: value });
   };
 
   return (
