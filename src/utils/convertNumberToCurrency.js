@@ -1,7 +1,8 @@
 export function convertNumberToCurrency(value, currency) {
-  const newValue = value.toLocaleString("pt-br", {
-    style: "currency",
-    currency: currency
-  });
-  return newValue;
+  const convert = (v) =>
+    v.toLocaleString("pt-br", {
+      style: "currency",
+      currency: currency
+    });
+  return value ? convert(value) : convert(0.0);
 }
