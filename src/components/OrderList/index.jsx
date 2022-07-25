@@ -78,7 +78,7 @@ export const OrderList = ({ itemsLimiter, items, onDispatchOrder }) => {
   );
 };
 
-CounterControl.propTypes = {
+OrderList.propTypes = {
   itemsLimiter: P.number,
   items: P.array,
   onDispatchOrder: P.func
