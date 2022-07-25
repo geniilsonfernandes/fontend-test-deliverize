@@ -11,15 +11,6 @@ export const Label = styled.h2`
     color: ${theme.colors.black[300]};
   `}
 `;
-export const Description = styled.span`
-  ${({ theme }) => css`
-    display: block;
-    font-weight: 400;
-    margin-top: 4px;
-    font-size: ${theme.fontSizes.xsmall};
-    color: ${theme.colors.yallow[100]};
-  `}
-`;
 
 export const ButtonsGroup = styled.div`
   display: flex;
