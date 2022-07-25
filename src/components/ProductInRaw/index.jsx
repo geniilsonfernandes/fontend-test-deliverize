@@ -1,18 +1,25 @@
 import React from "react";
+import P from "prop-types";
 
 import * as S from "./styles";
 
-export const ProductInRaw = () => {
+export const ProductInRaw = ({ order, name }) => {
   return (
     <S.ProductInRaw>
-      <h2>Oferta Cheddar Bacon</h2>
-      <span>Ingredientes:</span>
+      <h2>{name}</h2>
+      {order.length > 0 && <span>Ingredientes:</span>}
       <ul>
-        <li>1 Carne 250gr</li>
-        <li>2 Queijo Cheddar</li>
-        <li>1 Bacon</li>
-        <li>Molho Especial</li>
+        {order.map((item, i) => (
+          <li key={`${item.name}-${i}`}>
+            {item.amount <= 1 ? "" : item.amount} {item.name}
+          </li>
+        ))}
       </ul>
     </S.ProductInRaw>
   );
+};
+
+ProductInRaw.propTypes = {
+  order: P.array,
+  name: P.string
 };
