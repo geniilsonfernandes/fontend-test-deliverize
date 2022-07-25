@@ -1,45 +1,46 @@
 import React, { useEffect, useState } from "react";
+import { useOrderContext } from "../../context/orderContext";
 import { CartIcon } from "../../Icons";
 import { PopupModel } from "../PopupModel";
 import { ProductInRaw } from "../ProductInRaw";
 
-import P from "prop-types";
-
 import * as S from "./styles";
 
-export const CartButton = ({ counter, product }) => {
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
+
+export const CartButton = () => {
+  const { cartNotification, cartLenght } = useOrderContext();
   const [showPopop, setShowPopop] = useState(false);
 
   useEffect(() => {
-    product && setShowPopop(true);
+    !isEmpty(cartNotification) && setShowPopop(true);
 
     const timer = setTimeout(() => {
       setShowPopop(false);
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, [counter]);
+  }, [cartNotification]);
 
   return (
     <S.Wrapper aria-label="carrinho">
       <S.Icon>
-        {counter > 0 && <S.Ribbon>{counter}</S.Ribbon>}
-
+        {cartLenght > 0 && <S.Ribbon>{cartLenght}</S.Ribbon>}
         <CartIcon />
       </S.Icon>
       Carrinho
       {showPopop && (
         <S.PopUp>
           <PopupModel label="Adicionado com Sucesso" arrowPosition="right">
-            <ProductInRaw />
+            <ProductInRaw
+              order={cartNotification.additional}
+              name={`${cartNotification.orderQuantity} ${cartNotification.name}`}
+            />
           </PopupModel>
         </S.PopUp>
       )}
     </S.Wrapper>
   );
-};
-
-CartButton.propTypes = {
-  counter: P.number,
-  product: P.object
 };
