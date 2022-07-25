@@ -45,4 +45,9 @@ describe("<CounterControl />", () => {
     expect(counter).toHaveTextContent("0");
     expect(buttonRemove).toHaveStyle({ opacity: "0.5" });
   });
+  it("should starting in 5", () => {
+    renderWithTheme(<CounterControl {...mockProps} starting={5} />);
+    const counter = screen.getByLabelText("quantidade");
+    expect(counter).toHaveTextContent("5");
+  });
 });
