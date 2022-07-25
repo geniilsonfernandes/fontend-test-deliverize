@@ -58,10 +58,10 @@ export const OrderList = ({ itemsLimiter, items, onDispatchOrder }) => {
       </S.Head>
       <S.List>
         {items &&
-          items.map((v, i) => (
+          items.map((item, i) => (
             <IngredientsControl
-              key={i}
-              label={`item ${v}`}
+              key={`item+${i}-${item.label}`}
+              label={item.label}
               price={2.5}
               limiter={limiter}
               itemCounter={itemCounter}
@@ -72,9 +72,9 @@ export const OrderList = ({ itemsLimiter, items, onDispatchOrder }) => {
             />
           ))}
       </S.List>
-      <CutlerySelect onSelect={handleCutlerySelect} />
+      <CutlerySelect onSelect={handleCutlerySelect} label="Precisa de Talher?" />
       <S.Dispatch>
-        <CounterControl onCounter={handleOderCounter} starting={1} />
+        <CounterControl onCounter={handleOderCounter} starting={1} ariaLabel="quantidade de produtos" />
         <Button onClick={() => handleDispatchOrder()}>Adicionar</Button>
       </S.Dispatch>
     </S.Wrapper>
