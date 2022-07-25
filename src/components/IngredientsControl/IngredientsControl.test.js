@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { IngredientsControl } from ".";
 import renderWithTheme from "../../utils/test/renderWithTheme";
@@ -9,7 +9,7 @@ const mockProps = {
   onCounter: () => {},
   itemCounter: 2,
   limiter: 2,
-  price: 4.99,
+  price: 2.0,
   max: 3,
   label: "Queijo cheddar"
 };
@@ -19,8 +19,9 @@ describe("<IngredientsControl />", () => {
     renderWithTheme(<IngredientsControl {...mockProps} />);
 
     expect(screen.getByText("Queijo cheddar")).toBeInTheDocument();
-    expect(screen.getByText(`R$ 4,99`)).toBeInTheDocument();
+    expect(screen.getByText(`R$ 2,00`)).toBeInTheDocument();
   });
+
   it("should when click on the button (add)and add the value up to the limit", () => {
     renderWithTheme(<IngredientsControl {...mockProps} />);
 
@@ -32,7 +33,27 @@ describe("<IngredientsControl />", () => {
 
     expect(mockProps.onIncremental).toBeCalledTimes(2);
     expect(counter).toHaveTextContent("2");
-    //expect(buttonAdd).toHaveStyle({ opacity: "0.5" });
+  });
+
+  it("should Incremental value and Decremental value", async () => {
+    renderWithTheme(<IngredientsControl {...mockProps} />);
+
+    const buttonAdd = screen.getByLabelText("adicionar");
+    const buttonRemove = screen.getByLabelText("remover");
+
+    userEvent.click(buttonAdd);
+    userEvent.click(buttonAdd);
+    await waitFor(async () => {
+      expect(screen.getByText(`R$ 4,00`)).toBeInTheDocument();
+    });
+
+    userEvent.click(buttonRemove);
+    userEvent.click(buttonRemove);
+    userEvent.click(buttonRemove);
+
+    await waitFor(async () => {
+      expect(screen.getByText(`R$ 2,00`)).toBeInTheDocument();
+    });
   });
 
   it("should button add is disabled", () => {
