@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import P from "prop-types";
 import { CartIcon } from "../../Icons";
 import { PopupModel } from "../PopupModel";
 import { ProductInRaw } from "../ProductInRaw";
 
 import * as S from "./styles";
+import { useOrderContext } from "../../context/orderContext";
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
 }
 
-export const CartButton = ({ cartCounter, cartNotification }) => {
-
+export const CartButton = () => {
+  const { cartNotification, cartLenght } = useOrderContext()
   const [showPopop, setShowPopop] = useState(false);
 
   useEffect(() => {
@@ -25,14 +25,10 @@ export const CartButton = ({ cartCounter, cartNotification }) => {
   }, [cartNotification]);
 
 
-
-
-
-
   return (
     <S.Wrapper aria-label="carrinho">
       <S.Icon>
-        {cartCounter > 0 && <S.Ribbon>{cartCounter}</S.Ribbon>}
+        {cartLenght > 0 && <S.Ribbon>{cartLenght}</S.Ribbon>}
         <CartIcon />
       </S.Icon>
       Carrinho
@@ -52,8 +48,3 @@ export const CartButton = ({ cartCounter, cartNotification }) => {
 
 
 
-
-CartButton.propTypes = {
-  cartCounter: P.number,
-  cartNotification: P.object
-};

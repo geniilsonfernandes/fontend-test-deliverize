@@ -9,15 +9,20 @@ import { CartButton } from ".";
 import renderWithTheme from "../../utils/test/renderWithTheme";
 
 const mockProps = {
-  cartCounter: 2,
-  cartNotification: {}
+  cartLenght: 2,
+  cartNotification: { name: "foo" }
 };
 
-export const delay = (milliseconds, fn) => {
-  setTimeout(() => {
-    fn();
-  }, milliseconds);
-};
+jest.mock("../../context/orderContext", () => {
+  return {
+    __esModule: true,
+    useOrderContext: () => {
+      return {
+        ...mockProps
+      };
+    }
+  };
+});
 
 describe("<CartButton />", () => {
   jest.useFakeTimers();
@@ -26,7 +31,6 @@ describe("<CartButton />", () => {
 
     expect(screen.getByText(2)).toBeInTheDocument();
     expect(screen.getByText("Carrinho")).toBeInTheDocument();
-    expect(screen.queryByTestId("popup")).not.toBeInTheDocument();
   });
   it("should render and show popup ", async () => {
     mockProps.cartNotification = { name: "foo" };
@@ -39,7 +43,7 @@ describe("<CartButton />", () => {
   });
   it("should render and show popup ", async () => {
     mockProps.cartNotification = { name: "foo" };
-    renderWithTheme(<CartButton {...mockProps} />)
+    renderWithTheme(<CartButton {...mockProps} />);
     expect(screen.queryByTestId("popup")).toBeInTheDocument();
     expect(screen.getByText(/foo/i)).toBeInTheDocument();
 
