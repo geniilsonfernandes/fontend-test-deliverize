@@ -6,14 +6,19 @@ export const Wrapper = styled.div`
     border: 1px solid ${theme.colors.black[200]};
     border-radius: 8px;
     padding: 32px;
+
+    @media (max-width: ${theme.media.small}) {
+      border: none;
+      padding: 0;
+    }
   `}
 `;
 
 export const List = styled.div`
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 4px;
-    padding-bottom: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  padding-bottom: 16px;
 `;
 
 export const Head = styled(LayoutBox)`
