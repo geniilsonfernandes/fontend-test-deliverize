@@ -18,6 +18,15 @@ jest.mock("../MediaMatch", () => {
   };
 });
 
+jest.mock("../CartButton", () => {
+  return {
+    __esModule: true,
+    CartButton: () => {
+      return <div data-testid="cart">cart</div>;
+    }
+  };
+});
+
 describe("<Menu />", () => {
   it("should render Menu mobile and are closed", () => {
     renderWithTheme(<Menu />);
@@ -46,8 +55,11 @@ describe("<Menu />", () => {
       visibility: "visible",
       pointerEvents: "initial"
     });
-    userEvent.click(menuMobile.firstElementChild);
+    userEvent.click(menuBtn);
     expect(menuMobile).toHaveAttribute("aria-hidden", "true");
+    //open and close with overlay
+    userEvent.click(menuBtn);
+    userEvent.click(menuMobile.firstElementChild);
   });
   it("should render Menu desktop ", () => {
     mockMediaMatchProps.display = "block";
