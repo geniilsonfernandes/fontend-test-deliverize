@@ -5,7 +5,11 @@ export const CounterControl = styled.div`
     border: 1px solid ${theme.colors.yallow[100]};
     border-radius: ${theme.radius};
     display: inline-flex;
+    align-items: center;
     padding: 4px;
+    height: 40px;
+    width: 100%;
+    justify-content: space-between;
   `}
 `;
 

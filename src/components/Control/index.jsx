@@ -8,22 +8,23 @@ export const CounterControl = ({
   onIncremental,
   onDecremental,
   onCounter,
-  limiter
+  limiter = Infinity,
+  starting = 0
 }) => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(starting);
 
   const handleIncremental = () => {
     if (counter < limiter) {
-      onIncremental();
+      onIncremental && onIncremental();
       setCounter((s) => s + 1);
-      onCounter(counter);
+      onCounter(counter + 1);
     }
   };
   const handleDecremental = () => {
-    if (counter > 0) {
-      onDecremental();
+    if (counter > starting) {
+      onDecremental && onDecremental();
       setCounter((s) => s - 1);
-      onCounter(counter);
+      onCounter(counter - 1);
     }
   };
 
@@ -32,7 +33,7 @@ export const CounterControl = ({
       <S.Control
         onClick={() => handleDecremental()}
         aria-label="remover"
-        isDisabled={counter === 0}
+        isDisabled={counter === starting}
       >
         <AddIcon />
       </S.Control>
@@ -52,5 +53,6 @@ CounterControl.propTypes = {
   onIncremental: P.func,
   onDecremental: P.func,
   onCounter: P.func,
-  limiter: P.number.isRequired
+  limiter: P.number,
+  starting: P.number
 };
