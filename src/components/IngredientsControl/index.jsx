@@ -58,7 +58,7 @@ export const IngredientsControl = ({
           </S.Price>
         </S.Description>
 
-        <S.CounterControl aria-label="contador">
+        <S.CounterControl aria-label={`quantidade de items para ${label}`}>
           <S.Control
             onClick={() => handleDecremental()}
             aria-label="remover"

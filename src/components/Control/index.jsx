@@ -9,7 +9,8 @@ export const CounterControl = ({
   onDecremental,
   onCounter,
   limiter = Infinity,
-  starting = 0
+  starting = 0,
+  ariaLabel
 }) => {
   const [counter, setCounter] = useState(starting);
 
@@ -29,7 +30,7 @@ export const CounterControl = ({
   };
 
   return (
-    <S.CounterControl aria-label="contador">
+    <S.CounterControl aria-label={ariaLabel}>
       <S.Control
         onClick={() => handleDecremental()}
         aria-label="remover"
@@ -54,5 +55,6 @@ CounterControl.propTypes = {
   onDecremental: P.func,
   onCounter: P.func,
   limiter: P.number,
-  starting: P.number
+  starting: P.number,
+  ariaLabel: P.string
 };

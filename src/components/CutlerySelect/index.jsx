@@ -4,7 +4,7 @@ import P from "prop-types";
 
 import * as S from "./styles";
 
-export const CutlerySelect = ({ onSelect }) => {
+export const CutlerySelect = ({ onSelect, label }) => {
   const [select, setSelect] = useState(null);
 
   const onChange = (value) => {
@@ -15,7 +15,7 @@ export const CutlerySelect = ({ onSelect }) => {
   return (
     <LayoutBox>
       <S.Content>
-        <S.Label>Precisa de Talher?</S.Label>
+        <S.Label>{label}</S.Label>
       </S.Content>
       <S.ButtonsGroup>
         <S.Button
@@ -38,5 +38,6 @@ export const CutlerySelect = ({ onSelect }) => {
 };
 
 CutlerySelect.propTypes = {
-  onSelect: P.func
+  onSelect: P.func,
+  label: P.string
 };
