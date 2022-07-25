@@ -7,8 +7,10 @@ const mockProps = {
   onIncremental: jest.fn(),
   onDecremental: jest.fn(),
   onCounter: () => {},
+  itemCounter: 2,
   limiter: 2,
   price: 4.99,
+  max: 3,
   label: "Queijo cheddar"
 };
 
@@ -27,13 +29,27 @@ describe("<IngredientsControl />", () => {
 
     userEvent.click(buttonAdd);
     userEvent.click(buttonAdd);
-    userEvent.click(buttonAdd);
 
     expect(mockProps.onIncremental).toBeCalledTimes(2);
     expect(counter).toHaveTextContent("2");
+    //expect(buttonAdd).toHaveStyle({ opacity: "0.5" });
+  });
+
+  it("should button add is disabled", () => {
+    mockProps.itemCounter = 3;
+    renderWithTheme(<IngredientsControl {...mockProps} />);
+
+    const buttonAdd = screen.getByLabelText("adicionar");
+
+    userEvent.click(buttonAdd);
+
+    expect(mockProps.onIncremental).not.toBeCalled();
+
     expect(buttonAdd).toHaveStyle({ opacity: "0.5" });
   });
+
   it("should when click on the button (remove)and add the value up to the 0", () => {
+    mockProps.itemCounter = 2;
     renderWithTheme(<IngredientsControl {...mockProps} />);
 
     const buttonAdd = screen.getByLabelText("adicionar");
