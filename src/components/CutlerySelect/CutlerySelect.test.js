@@ -19,10 +19,10 @@ describe("<IngredientsControl />", () => {
 
     userEvent.click(buttonYes);
 
-    expect(mockProps.onSelect).toBeCalledWith("Sim");
+    expect(mockProps.onSelect).toBeCalledWith({ cutlery: "Sim" });
 
     userEvent.click(buttonNo);
 
-    expect(mockProps.onSelect).toBeCalledWith("Não");
+    expect(mockProps.onSelect).toBeCalledWith({ cutlery: "Não" });
   });
 });
