@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useOrderContext } from "../../context/orderContext";
+import P from "prop-types";
 import { CartIcon } from "../../Icons";
 import { PopupModel } from "../PopupModel";
 import { ProductInRaw } from "../ProductInRaw";
@@ -10,8 +10,8 @@ function isEmpty(obj) {
   return Object.keys(obj).length === 0;
 }
 
-export const CartButton = () => {
-  const { cartNotification, cartLenght } = useOrderContext();
+export const CartButton = ({ cartCounter, cartNotification }) => {
+
   const [showPopop, setShowPopop] = useState(false);
 
   useEffect(() => {
@@ -24,15 +24,20 @@ export const CartButton = () => {
     return () => clearTimeout(timer);
   }, [cartNotification]);
 
+
+
+
+
+
   return (
     <S.Wrapper aria-label="carrinho">
       <S.Icon>
-        {cartLenght > 0 && <S.Ribbon>{cartLenght}</S.Ribbon>}
+        {cartCounter > 0 && <S.Ribbon>{cartCounter}</S.Ribbon>}
         <CartIcon />
       </S.Icon>
       Carrinho
       {showPopop && (
-        <S.PopUp>
+        <S.PopUp data-testid="popup">
           <PopupModel label="Adicionado com Sucesso" arrowPosition="right">
             <ProductInRaw
               order={cartNotification.additional}
@@ -43,4 +48,12 @@ export const CartButton = () => {
       )}
     </S.Wrapper>
   );
+};
+
+
+
+
+CartButton.propTypes = {
+  cartCounter: P.number,
+  cartNotification: P.object
 };
