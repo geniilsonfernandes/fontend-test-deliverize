@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
 import {
   screen,
   waitFor,
-  waitForElementToBeRemoved,
   act
 } from "@testing-library/react";
 import { CartButton } from ".";
@@ -10,7 +8,8 @@ import renderWithTheme from "../../utils/test/renderWithTheme";
 
 const mockProps = {
   cartLenght: 2,
-  cartNotification: { name: "foo" }
+  cartNotification: { name: "foo" },
+  dispatchNotification: jest.fn()
 };
 
 jest.mock("../../context/orderContext", () => {
