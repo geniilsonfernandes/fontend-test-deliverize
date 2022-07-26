@@ -3,7 +3,8 @@ import renderWithTheme from "../../utils/test/renderWithTheme";
 import { Empty } from ".";
 
 const mockProps = {
-  erroMessage: "bar"
+  erroMessage: "bar",
+  message: "Algo errado aconteceu"
 };
 
 describe("<Empty />", () => {
