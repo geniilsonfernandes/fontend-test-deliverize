@@ -1,14 +1,17 @@
 import theme from "./styles/theme";
 import { ThemeProvider } from "styled-components";
+import { OrderProvider } from "./context/orderContext";
 import GlobalStyle from "./styles/globalStyles";
 import { ProductSingle } from "./pages/ProductSingle";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <ProductSingle />
-      <GlobalStyle />
-    </ThemeProvider>
+    <OrderProvider>
+      <ThemeProvider theme={theme}>
+        <ProductSingle />
+        <GlobalStyle />
+      </ThemeProvider>
+    </OrderProvider>
   );
 }
 
