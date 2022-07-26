@@ -7,6 +7,9 @@
 Projeto trate se de um tela de comprar de um produto onde podemos selecionar a quantidade e ingredientes extras se quisermos.
 O projeto conta com uma página específica para o carrinho onde podemos remover items.
 
+
+
+
 ## Libs Usadas
 
 - MSW - Lib para fazer o mock da requisição para api
@@ -25,6 +28,7 @@ npm run test src
 
 ## Lib dos componentes | Storybook
 
+![Preview-Screens](storybook_01.png)
 ```
 #Storybook
 npm run storybook
