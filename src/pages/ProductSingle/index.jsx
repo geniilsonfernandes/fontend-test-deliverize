@@ -52,7 +52,7 @@ export const ProductSingle = () => {
   return (
     <Base>
       <S.Main>
-        {error ? <Empty erroMessage={error.message} /> :
+        {error ? <Empty erroMessage={error.message} message="Algo errado aconteceu" /> :
           <>
             {
               isLoading ?
