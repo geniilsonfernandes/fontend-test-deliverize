@@ -2,7 +2,14 @@ import styled, { css } from "styled-components";
 import { ButtonWrapper } from "../ButtonWrapper";
 
 export const Icon = styled.div`
-  position: relative;
+  ${({ theme }) => css`
+    position: relative;
+    @media (max-width: ${theme.media.small}) {
+      svg{
+        max-width: 28px;
+      }
+    }
+  `}
 `;
 export const Wrapper = styled(ButtonWrapper)`
   position: relative;

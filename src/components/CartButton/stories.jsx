@@ -13,7 +13,7 @@ const styles = {
 };
 
 export const Default = (args) => (
-  <OrderContext.Provider value={{ cartLenght: args.counter, cartNotification: {} }}>
+  <OrderContext.Provider value={{ cartLenght: args.counter, dispatchNotification: () => { }, cartNotification: {} }}>
     <div style={{ ...styles }}>
       <CartButton {...args} />
     </div>
@@ -22,11 +22,10 @@ export const Default = (args) => (
 
 Default.args = {
   counter: 3,
-  cartNotification: {}
 };
 
 export const withNotification = (args) => (
-  <OrderContext.Provider value={{ cartLenght: args.counter, cartNotification: { name: `item ${args.counter}`, orderQuantity: 1 } }}>
+  <OrderContext.Provider value={{ cartLenght: args.counter, dispatchNotification: () => { }, cartNotification: { name: `item ${args.counter}`, orderQuantity: 1 } }}>
     <div style={{ ...styles }}>
       <CartButton {...args} />
     </div>
@@ -36,3 +35,11 @@ export const withNotification = (args) => (
 withNotification.args = {
   counter: 3,
 };
+
+export const Small = (args) => (
+  <OrderContext.Provider value={{ cartLenght: args.counter, dispatchNotification: () => { }, cartNotification: { name: `item ${args.counter}`, orderQuantity: 1 } }}>
+    <div style={{ ...styles }}>
+      <CartButton {...args} small />
+    </div>
+  </OrderContext.Provider>
+);

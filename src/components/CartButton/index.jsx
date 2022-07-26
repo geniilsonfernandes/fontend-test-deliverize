@@ -11,7 +11,7 @@ function isEmpty(obj) {
   return Object.keys(obj).length === 0;
 }
 
-export const CartButton = ({ onClick }) => {
+export const CartButton = ({ onClick, small = false }) => {
   const { cartNotification, cartLenght, dispatchNotification } = useOrderContext()
   const [showPopop, setShowPopop] = useState(false);
 
@@ -36,7 +36,7 @@ export const CartButton = ({ onClick }) => {
         {cartLenght > 0 && <S.Ribbon>{cartLenght}</S.Ribbon>}
         <CartIcon />
       </S.Icon>
-      Carrinho
+      {!small && 'Carrinho'}
       {showPopop && (
         <S.PopUp data-testid="popup">
           <PopupModel label="Adicionado com Sucesso" arrowPosition="right">
@@ -53,4 +53,5 @@ export const CartButton = ({ onClick }) => {
 
 CartButton.propTypes = {
   onClick: P.func,
+  small: P.bool
 };
