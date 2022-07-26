@@ -62,10 +62,10 @@ export const OrderList = ({ itemsLimiter, items, onDispatchOrder }) => {
             <IngredientsControl
               key={`item+${i}-${item.label}`}
               label={item.label}
-              price={2.5}
+              price={item.price}
               limiter={limiter}
               itemCounter={itemCounter}
-              max={8}
+              max={maxLimiter}
               onIncremental={handleAddItemToList}
               onDecremental={handleRemoveItemToList}
               onCounter={handleLimiter}
@@ -81,8 +81,15 @@ export const OrderList = ({ itemsLimiter, items, onDispatchOrder }) => {
   );
 };
 
+
 OrderList.propTypes = {
   itemsLimiter: P.number,
-  items: P.array,
+  items: P.arrayOf(P.shape({
+    label: P.string,
+    price: P.number
+  })),
   onDispatchOrder: P.func
 };
+
+
+
