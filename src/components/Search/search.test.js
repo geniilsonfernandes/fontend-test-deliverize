@@ -7,7 +7,7 @@ const mockProps = {
   onSubmit: jest.fn()
 };
 
-describe("<Address />", () => {
+describe("<search />", () => {
   it("should render search in the document", () => {
     renderWithTheme(<Search {...mockProps} />);
 
@@ -33,8 +33,8 @@ describe("<Address />", () => {
     );
 
     userEvent.type(input, "x burguer");
-    userEvent.keyboard("{enter}")
-    
-    expect(mockProps.onSubmit).toBeCalledWith("x burguer")
+    userEvent.keyboard("{enter}");
+
+    expect(mockProps.onSubmit).toBeCalledWith("x burguer");
   });
 });
