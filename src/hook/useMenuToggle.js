@@ -13,7 +13,7 @@ const useMenuToggle = ({ lockBody }) => {
         ? (document.body.style.overflow = "hidden")
         : (document.body.style.overflow = null);
     }
-  }, [isVisibility]);
+  }, [isVisibility, lockBody]);
 
   return {
     toggle,
