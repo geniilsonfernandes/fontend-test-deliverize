@@ -17,31 +17,28 @@ export const IngredientsControl = ({
 }) => {
   const [counter, setCounter] = useState(0);
 
+  
+  const createIngredient = (key, quant, value) => ({
+    [key.replace(" ", "-")]: {
+      amount: quant,
+      price: value,
+      name: key
+    }
+  })
+
   const handleIncremental = () => {
     if (itemCounter < max) {
       setCounter((s) => s + 1);
       onCounter(limiter - 1);
-      onIncremental({
-        [label.replace(" ", "-")]: {
-          amount: counter + 1,
-          price: price,
-          name: label
-        }
-      });
+      onIncremental(createIngredient(label, counter + 1, price))
     }
   };
-  
+
   const handleDecremental = () => {
     if (counter > 0) {
       setCounter((s) => s - 1);
       onCounter(limiter + 1);
-      onDecremental({
-        [label.replace(" ", "-")]: {
-          amount: counter - 1,
-          price: price,
-          name: label
-        }
-      });
+      onDecremental(createIngredient(label, counter - 1, price))
     }
   };
 
