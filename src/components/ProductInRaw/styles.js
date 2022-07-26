@@ -21,7 +21,7 @@ export const ProductInRaw = styled.div`
       font-size: 1.2rem;
       color: #4e4e4e;
       ::before {
-        content: "•";
+        content: "+";
         padding: 0 8px;
       }
       &:not(:last-child) {
