@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const useAxiosFetch = (url) => {
+const useAxiosFetch = (https) => {
+  const [url, setUrl] = useState(https);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
@@ -17,6 +18,7 @@ const useAxiosFetch = (url) => {
         setError(false);
         setIsLoading(false);
       } catch (error) {
+        console.log(error);
         setError(error);
         setIsLoading(false);
       }
@@ -24,7 +26,11 @@ const useAxiosFetch = (url) => {
     getData();
   }, [url]);
 
-  return { isLoading, error, data };
+  const getDataByUrl = (value) => {
+    setUrl(value);
+  };
+
+  return { isLoading, error, data, getDataByUrl };
 };
 
 export default useAxiosFetch;
