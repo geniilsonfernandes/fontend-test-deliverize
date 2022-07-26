@@ -1,31 +1,37 @@
 import React, { useEffect, useState } from "react";
+import { useOrderContext } from "../../context/orderContext";
 import { CartIcon } from "../../Icons";
 import { PopupModel } from "../PopupModel";
 import { ProductInRaw } from "../ProductInRaw";
+import P from "prop-types";
 
 import * as S from "./styles";
-import { useOrderContext } from "../../context/orderContext";
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
 }
 
-export const CartButton = () => {
-  const { cartNotification, cartLenght } = useOrderContext()
+export const CartButton = ({ onClick }) => {
+  const { cartNotification, cartLenght, dispatchNotification } = useOrderContext()
   const [showPopop, setShowPopop] = useState(false);
 
   useEffect(() => {
     !isEmpty(cartNotification) && setShowPopop(true);
-    
+
     const timer = setTimeout(() => {
       setShowPopop(false);
+      dispatchNotification({})
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, [cartNotification]);
+  }, [cartNotification, dispatchNotification]);
+
+  const handleCLick = () => {
+    onClick()
+  }
 
   return (
-    <S.Wrapper aria-label="carrinho">
+    <S.Wrapper aria-label="carrinho" onClick={() => handleCLick()}>
       <S.Icon>
         {cartLenght > 0 && <S.Ribbon>{cartLenght}</S.Ribbon>}
         <CartIcon />
@@ -45,5 +51,6 @@ export const CartButton = () => {
   );
 };
 
-
-
+CartButton.propTypes = {
+  onClick: P.func,
+};
