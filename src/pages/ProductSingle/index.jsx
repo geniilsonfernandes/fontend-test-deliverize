@@ -3,6 +3,7 @@ import useAxiosFetch from "../../hook/useAxiosFetch";
 import { Base } from "../Base";
 import { useOrderContext } from "../../context/orderContext";
 import { OrderList } from "../../components/OrderList";
+import { Empty } from "../../components/Empty";
 import OrderSkeleton from "../../components/OrderList/Order.skeleton";
 import { Product } from "../../components/Product";
 import ProductSkeleton from "../../components/Product/Product.skeleton";
@@ -14,7 +15,7 @@ import useDocumentTitle from "../../hook/useDocumentTitle";
 
 export const ProductSingle = () => {
   const { setTitle } = useDocumentTitle()
-  const { isLoading, data } = useAxiosFetch(process.env.REACT_APP_URL_GET_PRODUCT)
+  const { isLoading, data, error } = useAxiosFetch(process.env.REACT_APP_URL_GET_PRODUCT)
   const { addOrderToCart } = useOrderContext();
   const [product, setProduct] = useState({})
   const [items, setItems] = useState({})
@@ -52,19 +53,25 @@ export const ProductSingle = () => {
   return (
     <Base>
       <S.Main>
-        {isLoading ?
-          <ProductSkeleton />
-          :
-          <Product {...product} url={mock.url} />
-        }
-        {isLoading ?
-          <OrderSkeleton />
-          :
-          <OrderList
-            onDispatchOrder={dispatchOrder}
-            itemsLimiter={items.itemsLimiter}
-            items={items.itens}
-          />
+        {error ? <Empty erroMessage={error.message} /> :
+          <>
+            {
+              isLoading ?
+                <ProductSkeleton />
+                :
+                <Product {...product} url={mock.url} />
+            }
+            {
+              isLoading ?
+                <OrderSkeleton />
+                :
+                <OrderList
+                  onDispatchOrder={dispatchOrder}
+                  itemsLimiter={items.itemsLimiter}
+                  items={items.itens}
+                />
+            }
+          </>
         }
       </S.Main>
     </Base>
