@@ -2,16 +2,19 @@ import theme from "./styles/theme";
 import { ThemeProvider } from "styled-components";
 import { OrderProvider } from "./context/orderContext";
 import GlobalStyle from "./styles/globalStyles";
-import { ProductSingle } from "./pages/ProductSingle";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./Router";
 
 function App() {
   return (
-    <OrderProvider>
-      <ThemeProvider theme={theme}>
-        <ProductSingle />
-        <GlobalStyle />
-      </ThemeProvider>
-    </OrderProvider>
+    <BrowserRouter>
+      <OrderProvider>
+        <ThemeProvider theme={theme}>
+          <Router />
+          <GlobalStyle />
+        </ThemeProvider>
+      </OrderProvider>
+    </BrowserRouter>
   );
 }
 

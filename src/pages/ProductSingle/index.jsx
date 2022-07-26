@@ -43,9 +43,8 @@ export const ProductSingle = () => {
   const dispatchOrder = (order) => {
     addOrderToCart({
       ...order,
-      name: mock.name,
+      ...product,
       uid: `uid${new Date().getTime()}`,
-      price: mock.price
     });
   };
 
