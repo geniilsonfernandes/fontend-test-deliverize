@@ -57,7 +57,7 @@ export const MenuMobile = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 10;
+  width: calc(100vw - 32px);
 `;
 export const ArrowLeft = styled(ButtonWrapper)`
   ${({ theme }) => css`

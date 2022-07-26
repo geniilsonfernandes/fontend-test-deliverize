@@ -53,6 +53,7 @@ export const Menu = () => {
             >
               {isVisibility ? <XisIcon /> : <ArrowIcon />}
             </S.ArrowLeft>
+            <CartButton onClick={handleClickCartButton} small />
           </S.MenuMobile>
 
           <S.MenuFull
