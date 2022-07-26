@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useOrderContext } from '../../context/orderContext';
 import { Base } from '../Base'
 import { ProductCart } from '../../components/ProductCart';
 import { Empty } from '../../components/Empty';
+import useDocumentTitle from "../../hook/useDocumentTitle";
 import * as S from './styles'
 
 export const Cart = () => {
+	const { setTitle } = useDocumentTitle()
 	const { cart, removeOrderToCart } = useOrderContext();
+
+	useEffect(() => {
+		setTitle("Deliverize | carrinho")
+	}, [setTitle])
+
 
 	const handleRemoveOrder = (value) => {
 		removeOrderToCart(value)
