@@ -39,6 +39,8 @@ export const Container = css`
     max-width: 1216px;
     margin: 0 auto;
     @media (max-width: ${theme.media.small}) {
+      padding-left: 16px;
+      padding-right: 16px;
     }
   `}
 `;

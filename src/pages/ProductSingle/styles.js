@@ -4,7 +4,7 @@ import { Container } from "../../components/Layout/LayoutHelper";
 export const Main = styled.div`
   ${({ theme }) => css`
     ${Container}
-    padding: 64px 0;
+    padding: 64px 16px;
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 96px;

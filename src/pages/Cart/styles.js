@@ -18,6 +18,7 @@ export const Head = styled.div`
     @media (max-width: ${theme.media.small}) {
       padding: 16px 0;
       font-size: 1.8rem;
+      ${Container}
     }
   `}
 `;
