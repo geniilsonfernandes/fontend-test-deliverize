@@ -30,6 +30,7 @@ export const IngredientsControl = ({
       });
     }
   };
+  
   const handleDecremental = () => {
     if (counter > 0) {
       setCounter((s) => s - 1);

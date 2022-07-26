@@ -3,8 +3,6 @@ import empty from '../../images/hunger.png'
 import P from "prop-types";
 import * as S from "./styles";
 
-
-
 export const Empty = ({ erroMessage }) => {
     return (
         <S.Wrapper>

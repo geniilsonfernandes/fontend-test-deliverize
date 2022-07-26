@@ -7,11 +7,10 @@ import { Empty } from "../../components/Empty";
 import OrderSkeleton from "../../components/OrderList/Order.skeleton";
 import { Product } from "../../components/Product";
 import ProductSkeleton from "../../components/Product/Product.skeleton";
-
-import * as S from "./styles";
-
 import mock from "../../components/Product/mock";
 import useDocumentTitle from "../../hook/useDocumentTitle";
+
+import * as S from "./styles";
 
 export const ProductSingle = () => {
   const { setTitle } = useDocumentTitle()
@@ -20,9 +19,9 @@ export const ProductSingle = () => {
   const [product, setProduct] = useState({})
   const [items, setItems] = useState({})
 
-
   useEffect(() => {
     const { ingredients, ...rest } = { ...data[0] };
+
     if (rest.nm_product) {
       setProduct({
         name: rest.nm_product,

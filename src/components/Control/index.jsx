@@ -21,6 +21,7 @@ export const CounterControl = ({
       onCounter(counter + 1);
     }
   };
+  
   const handleDecremental = () => {
     if (counter > starting) {
       onDecremental && onDecremental();

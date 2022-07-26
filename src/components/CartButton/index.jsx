@@ -16,14 +16,13 @@ export const CartButton = () => {
 
   useEffect(() => {
     !isEmpty(cartNotification) && setShowPopop(true);
-
+    
     const timer = setTimeout(() => {
       setShowPopop(false);
     }, 3000);
 
     return () => clearTimeout(timer);
   }, [cartNotification]);
-
 
   return (
     <S.Wrapper aria-label="carrinho">
