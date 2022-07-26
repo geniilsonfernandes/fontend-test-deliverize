@@ -1,16 +1,8 @@
-/* eslint-disable react/prop-types */
-import {
-  screen,
-  waitForElementToBeRemoved,
-  waitFor,
-} from "@testing-library/dom";
+import { screen, waitFor } from "@testing-library/dom";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ForecastContext, ForecastProvider } from ".";
-import { getWeather } from "../../services/api";
 import { act } from "react-dom/test-utils";
-
-jest.mock("../../services/api");
+import { OrderContext, OrderProvider } from ".";
 
 let store = {};
 const fakeLocalStorage = (function () {
@@ -26,14 +18,14 @@ const fakeLocalStorage = (function () {
     },
     clear: function () {
       store = {};
-    },
+    }
   };
 })();
 
-describe("ForecastProvider", () => {
+describe("OrderContext", () => {
   beforeAll(() => {
     Object.defineProperty(window, "localStorage", {
-      value: fakeLocalStorage,
+      value: fakeLocalStorage
     });
   });
 
@@ -41,138 +33,66 @@ describe("ForecastProvider", () => {
     store = {};
   });
 
-  it("should call function and recived date", async () => {
-    getWeather.mockResolvedValueOnce({
-      name: "Vitória",
-    });
-
+  it("should add item to cart and recive item in states depedecys", async () => {
     render(
-      <ForecastProvider>
-        <ForecastContext.Consumer>
-          {({ getForecastByParams, data, error, sucess }) => (
+      <OrderProvider>
+        <OrderContext.Consumer>
+          {({ addOrderToCart, cart, cartNotification, cartLenght }) => (
             <>
-              {!data.name && <span>Loading...</span>}
-              {sucess && <span>sucess</span>}
-              {sucess && <span>{data.name}</span>}
-              {error && <span>{error}</span>}
               <button
-                onClick={() => getForecastByParams("rio")}
-                data-testid="btn"
-              />
+                data-testid="addToCart"
+                onClick={() => addOrderToCart({ name: "foo" })}
+              ></button>
+
+              <span data-testid="cart">{cart[0]?.name}</span>
+              <span data-testid="cartLenght">{cartLenght}</span>
+              <span data-testid="cartNotification">
+                {cartNotification?.name}
+              </span>
             </>
           )}
-        </ForecastContext.Consumer>
-      </ForecastProvider>
+        </OrderContext.Consumer>
+      </OrderProvider>
     );
 
-    userEvent.click(screen.getByTestId("btn"));
-    expect(getWeather).toBeCalledWith("rio");
-    await waitForElementToBeRemoved(() => screen.queryByText("Loading..."));
+    userEvent.click(screen.getByTestId("addToCart"));
     await waitFor(() => {
-      expect(screen.queryByText("Vitória")).toBeInTheDocument();
-      expect(screen.queryByText("sucess")).toBeInTheDocument();
-    });
-  });
-
-  it("should show error message", async () => {
-    getWeather.mockRejectedValueOnce(new Error("city not found"));
-    render(
-      <ForecastProvider>
-        <ForecastContext.Consumer>
-          {({ error, getForecastByParams }) => (
-            <>
-              <span> {error} </span>
-              <button
-                onClick={() => getForecastByParams("foo")}
-                data-testid="btn"
-              />
-            </>
-          )}
-        </ForecastContext.Consumer>
-      </ForecastProvider>
-    );
-
-    userEvent.click(screen.getByTestId("btn"));
-    await waitFor(() => {
-      expect(screen.queryByText("city not found")).toBeInTheDocument();
-    });
-  });
-
-  it("should return current city", async () => {
-    getWeather.mockResolvedValueOnce({
-      name: "campos",
-    });
-
-    act(() => {
-      render(
-        <ForecastProvider>
-          <ForecastContext.Consumer>
-            {({ getForecastByParams, currentPlace }) => (
-              <>
-                {currentPlace && <span> {currentPlace.name} </span>}
-                <button
-                  onClick={() => getForecastByParams("foo")}
-                  data-testid="btn"
-                />
-              </>
-            )}
-          </ForecastContext.Consumer>
-        </ForecastProvider>
-      );
-    });
-    act(() => {
-      userEvent.click(screen.getByTestId("btn"));
+      expect(screen.getByTestId("cart")).toHaveTextContent("foo");
     });
     await waitFor(() => {
-      expect(screen.queryByText("campos")).toBeInTheDocument();
+      expect(screen.getByTestId("cartNotification")).toHaveTextContent("foo");
+    });
+    await waitFor(() => {
+      expect(screen.getByTestId("cartLenght")).toHaveTextContent("1");
     });
   });
 
   describe("localStorage", () => {
-    it("should call function when currrent city has in localstorege", async () => {
+    it("should get cart by local storage", async () => {
       store = {
-        currentPlace: '{"name":"foo"}',
+        cart: '[{"name":"foo"}]'
       };
 
-      getWeather.mockResolvedValueOnce({
-        name: "foo",
-      });
-
       await act(async () => {
         render(
-          <ForecastProvider>
-            <ForecastContext.Consumer>
-              {({ currentPlace }) => (
-                <>{currentPlace && <span>{currentPlace.name}</span>}</>
+          <OrderProvider>
+            <OrderContext.Consumer>
+              {({ cart, cartLenght }) => (
+                <>
+                  <span data-testid="cartLenght">{cartLenght}</span>
+                  <span data-testid="cart">{cart[0]?.name}</span>
+                </>
               )}
-            </ForecastContext.Consumer>
-          </ForecastProvider>
+            </OrderContext.Consumer>
+          </OrderProvider>
         );
       });
 
-      expect(getWeather).toBeCalledWith({ q: "foo" });
-      
       await waitFor(() => {
-        expect(screen.queryByText("foo")).toBeInTheDocument();
+        expect(screen.getByTestId("cart")).toHaveTextContent("foo");
       });
-    });
-    it("should not call function when currrent city don't has in localstorege", async () => {
-      store = {};
-
-      await act(async () => {
-        render(
-          <ForecastProvider>
-            <ForecastContext.Consumer>
-              {({ data }) => <>{!data.name && <span>no has city</span>}</>}
-            </ForecastContext.Consumer>
-          </ForecastProvider>
-        );
-      });
-
-      expect(getWeather).not.toBeCalled();
-
       await waitFor(() => {
-        expect(screen.queryByText("no has city")).toBeInTheDocument();
+        expect(screen.getByTestId("cartLenght")).toHaveTextContent("1");
       });
     });
   });

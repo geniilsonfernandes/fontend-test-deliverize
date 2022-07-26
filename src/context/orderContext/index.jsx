@@ -12,8 +12,6 @@ export const OrderProvider = ({ children }) => {
   const [cartLenght, setCartLenght] = useState(0);
   const [cartNotification, setCartNotification] = useState({});
 
-
-
   const dispatchNotification = (message) => {
     setCartNotification(message);
   };
