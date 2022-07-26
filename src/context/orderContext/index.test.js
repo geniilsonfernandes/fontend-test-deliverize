@@ -69,7 +69,7 @@ describe("OrderContext", () => {
 
   it("should remove item to cart", async () => {
     store = {
-      cart: '[{"name":"foo", uid:"1"},{"name":"foo2", uid:"2"}]'
+      cart: '[{"name":"foo", "uid":"1"},{"name":"foo2", "uid":"2"}]'
     };
     render(
       <OrderProvider>
@@ -78,7 +78,7 @@ describe("OrderContext", () => {
             <>
               <button
                 data-testid="removeOrderToCart"
-                onClick={() => removeOrderToCart("2")}
+                onClick={() => removeOrderToCart("1")}
               ></button>
 
               {cart.map((i) => (
