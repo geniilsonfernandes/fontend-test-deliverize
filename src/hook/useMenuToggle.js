@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useMenuToggle = ({ lockBody }) => {
+const useMenuToggle = (options) => {
   const [isVisibility, setIsVisibility] = useState(false);
 
   const toggle = () => {
@@ -8,12 +8,12 @@ const useMenuToggle = ({ lockBody }) => {
   };
 
   useEffect(() => {
-    if (lockBody) {
+    if (options?.lockBody) {
       isVisibility
         ? (document.body.style.overflow = "hidden")
         : (document.body.style.overflow = null);
     }
-  }, [isVisibility, lockBody]);
+  }, [isVisibility, options]);
 
   return {
     toggle,
