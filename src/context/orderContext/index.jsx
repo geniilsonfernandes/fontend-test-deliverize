@@ -12,13 +12,19 @@ export const OrderProvider = ({ children }) => {
   const [cartLenght, setCartLenght] = useState(0);
   const [cartNotification, setCartNotification] = useState({});
 
-  const dispatchNotification = (message) => {
-    setCartNotification(message);
+  const dispatchNotification = (orderAsNotification) => {
+    setCartNotification(orderAsNotification);
   };
 
   const addOrderToCart = (order) => {
     setCart((prev) => [...prev, order]);
     dispatchNotification(order);
+  };
+
+
+  const removeOrderToCart = (uid) => {
+    const orderFilterd = cart.filter(item => item.uid !== uid)
+    setCart(orderFilterd);
   };
 
   useEffect(() => {
@@ -28,7 +34,7 @@ export const OrderProvider = ({ children }) => {
 
   return (
     <OrderContext.Provider
-      value={{ addOrderToCart, cart, cartNotification, cartLenght }}
+      value={{ addOrderToCart, cart, cartNotification, cartLenght, removeOrderToCart, dispatchNotification }}
     >
       {children}
     </OrderContext.Provider>
