@@ -7,7 +7,6 @@
 Projeto trate se de um tela de comprar de um produto onde podemos selecionar a quantidade e ingredientes extras se quisermos.
 O projeto conta com uma página específica para o carrinho onde podemos remover items.
 
-
 ## Libs Usadas
 
 - MSW - Lib para fazer o mock da requisição para api
@@ -31,6 +30,9 @@ npm run test src
 npm run storybook
 
 ```
+
+ou
+link para o Storybook : :heavy_check_mark: [Storybook](https://fontend-test-deliverize-stories.vercel.app/)
 
 ## Funcionalidades
 
@@ -61,14 +63,5 @@ Depois de estar dentro do repositório:
 npm start
 
 # output - http://localhost:3000/
-
-```
-
-## Lib dos componentes | Storybook
-
-```
-
-#Storybook
-npm run storybook
 
 ```
