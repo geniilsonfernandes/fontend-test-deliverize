@@ -67,6 +67,37 @@ describe("OrderContext", () => {
     });
   });
 
+  it("should remove item to cart", async () => {
+    store = {
+      cart: '[{"name":"foo", uid:"1"},{"name":"foo2", uid:"2"}]'
+    };
+    render(
+      <OrderProvider>
+        <OrderContext.Consumer>
+          {({ cart, removeOrderToCart }) => (
+            <>
+              <button
+                data-testid="removeOrderToCart"
+                onClick={() => removeOrderToCart("2")}
+              ></button>
+
+              {cart.map((i) => (
+                <span key={i.uid} data-testid="cart">
+                  {i.name}
+                </span>
+              ))}
+            </>
+          )}
+        </OrderContext.Consumer>
+      </OrderProvider>
+    );
+
+    userEvent.click(screen.getByTestId("removeOrderToCart"));
+    await waitFor(() => {
+      expect(screen.getAllByTestId("cart")).toHaveLength(1);
+    });
+  });
+
   describe("localStorage", () => {
     it("should get cart by local storage", async () => {
       store = {

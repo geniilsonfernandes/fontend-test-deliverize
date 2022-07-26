@@ -7,7 +7,7 @@ import { CartButton } from "../CartButton";
 import { MediaMatch } from "../MediaMatch";
 import theme from "../../styles/theme";
 import useMenuToggle from "../../hook/useMenuToggle";
-
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const mockProps = {
@@ -15,16 +15,24 @@ const mockProps = {
 };
 
 export const Menu = () => {
+  const navigate = useNavigate()
   const { isVisibility, toggle } = useMenuToggle({ lockBody: true });
 
   const handleToggleMenu = () => {
     toggle();
   };
 
+  const handleClickCartButton = () => {
+    navigate("/cart")
+  }
+  const handleClickBrand = () => {
+    navigate("/")
+  }
+
   return (
     <S.Wrapper_fluid>
       <S.Wrapper aria-label="menu" role="navigation">
-        <S.Brand>
+        <S.Brand onClick={handleClickBrand}>
           <Logo role="img" title="Deliverize" alt="Deliverize" />
         </S.Brand>
 
@@ -33,7 +41,7 @@ export const Menu = () => {
             <Address currentAddress={mockProps.Address} />
             <Search />
             <UserAuth />
-            <CartButton />
+            <CartButton onClick={handleClickCartButton} />
           </S.MenuDesktop>
         </MediaMatch>
 
